@@ -73,7 +73,7 @@ function Home() {
                 <Card.Text style={{ flexGrow: 1 }}>{movie.overview}</Card.Text>
                 <a href={`https://www.themoviedb.org/movie/${movie.id}`} target="_blank" rel="noReferrer">
                   {" "}
-                  <Button variant="primary">View Details</Button>
+                  <Button className="w-100" variant="primary">View Details</Button>
                 </a>
               </Card.Body>
             </Card>
