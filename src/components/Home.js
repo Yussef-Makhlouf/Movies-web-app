@@ -58,7 +58,6 @@ function Home() {
             <Card style={{ width: "100%", height: "100%" }}>
               <Card.Img
                 variant="top"
-                style={{ width: "100%", height: "150px", objectFit: "cover" }}
                 src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
               />
               <Card.Body
@@ -73,7 +72,7 @@ function Home() {
                 <Card.Text style={{ flexGrow: 1 }}>{movie.overview}</Card.Text>
                 <a href={`https://www.themoviedb.org/movie/${movie.id}`} target="_blank" rel="noReferrer">
                   {" "}
-                  <Button className="w-100" variant="primary">View Details</Button>
+                  <Button className="w-100 btn btn-success">View Details</Button>
                 </a>
               </Card.Body>
             </Card>
