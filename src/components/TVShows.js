@@ -59,7 +59,7 @@ const TVShows = () => {
                 <Card.Text className="flex-grow-1">
                   {tvShow.overview.length > 100 ? tvShow.overview.substring(0, 100) + '...' : tvShow.overview}
                 </Card.Text>
-                <a href={`https://www.themoviedb.org/movie/${movie.id}`} target="_blank" rel="noReferrer">
+                <a href={`https://www.themoviedb.org/movie/${tvShow.id}`} target="_blank" rel="noReferrer">
                   {" "}
                   <Button className="w-100 btn btn-success">View Details</Button>
                 </a>              </Card.Body>
