@@ -67,16 +67,16 @@ const TVShows = () => {
           </div>
         ))}
       </div>
-      <Pagination className="mt-4 justify-content-center">
+      <Pagination className="mt-4 justify-content-center ">
         <Pagination.First onClick={() => setPage(1)} />
         <Pagination.Prev onClick={() => setPage(prev => Math.max(prev - 1, 1))} />
-        {[...Array(30).keys()].map(number => (
+        {[...Array(20).keys()].map(number => (
           <Pagination.Item key={number + 1} active={number + 1 === page} onClick={() => setPage(number + 1)}>
             {number + 1}
           </Pagination.Item>
         ))}
         <Pagination.Next onClick={() => setPage(prev => Math.min(prev + 1, totalPages))} />
-        <Pagination.Last onClick={() => setPage(30)} />
+        <Pagination.Last onClick={() => setPage(20)} />
       </Pagination>
 
     </div>
