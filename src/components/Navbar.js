@@ -6,12 +6,11 @@ function NavigationBar() {
   return (
     <Navbar bg="dark" variant="dark" expand="lg">
       <div className="container">
-        <Navbar.Brand as={Link} to="/">MovieHub</Navbar.Brand>
+        <Navbar.Brand as={Link} to="/">Netflix-الغلابه</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbar-nav" />
         <Navbar.Collapse id="navbar-nav">
           <Nav className="me-auto">
             <Nav.Link as={Link} to="/">Home</Nav.Link>
-            <Nav.Link as={Link} to="/movies">Movies</Nav.Link>
             <Nav.Link as={Link} to="/tvshows">TV Shows</Nav.Link>
             <Nav.Link as={Link} to="/about">About</Nav.Link>
             <Nav.Link as={Link} to="/contact">Contact</Nav.Link>

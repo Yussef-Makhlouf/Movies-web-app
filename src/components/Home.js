@@ -10,9 +10,9 @@
 // }
 
 // export default Home;
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import { Card, Button } from 'react-bootstrap';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { Card, Button } from "react-bootstrap";
 
 function Home() {
   const [movies, setMovies] = useState([]);
@@ -20,14 +20,17 @@ function Home() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('https://api.themoviedb.org/3/movie/popular', {
-          params: {
-            api_key: 'aa6fc65fcedb7431af3ac2fbe6484cd0'
+        const response = await axios.get(
+          "https://api.themoviedb.org/3/movie/popular",
+          {
+            params: {
+              api_key: "aa6fc65fcedb7431af3ac2fbe6484cd0",
+            },
           }
-        });
+        );
         setMovies(response.data.results);
       } catch (error) {
-        console.error('Error fetching data:', error);
+        console.error("Error fetching data:", error);
       }
     };
 
@@ -48,24 +51,36 @@ function Home() {
 
   return (
     <div className="container">
-  <h1>Home Page</h1>
-  <div className="row">
-    {movies.map(movie => (
-      <div className="col-md-4 mb-4" key={movie.id}>
-        <Card style={{ width: '100%', height: '100%' }}>
-          <Card.Img variant="top" style={{ width: '100%', height: '150px', objectFit: 'cover' }} src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} />
-          <Card.Body style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '100%' }}>
-            <Card.Title>{movie.title}</Card.Title>
-            <Card.Text style={{ flexGrow: 1 }}>
-              {movie.overview}
-            </Card.Text>
-            <Button variant="primary">View Details</Button>
-          </Card.Body>
-        </Card>
+      <h1>Home Page</h1>
+      <div className="row">
+        {movies.map((movie) => (
+          <div className="col-md-4 mb-4" key={movie.id}>
+            <Card style={{ width: "100%", height: "100%" }}>
+              <Card.Img
+                variant="top"
+                style={{ width: "100%", height: "150px", objectFit: "cover" }}
+                src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+              />
+              <Card.Body
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "space-between",
+                  height: "100%",
+                }}
+              >
+                <Card.Title>{movie.title}</Card.Title>
+                <Card.Text style={{ flexGrow: 1 }}>{movie.overview}</Card.Text>
+                <a href={`https://www.themoviedb.org/movie/${movie.id}`} target="_blank" rel="noReferrer">
+                  {" "}
+                  <Button variant="primary">View Details</Button>
+                </a>
+              </Card.Body>
+            </Card>
+          </div>
+        ))}
       </div>
-    ))}
-  </div>
-</div>
+    </div>
   );
 }
 
