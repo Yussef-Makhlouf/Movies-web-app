@@ -44,11 +44,10 @@ const TVShows = () => {
         <Form.Control
           placeholder="Search TV shows..."
           aria-label="Search TV shows"
-          aria-describedby="basic-addon2"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
-        <Button variant="outline-secondary" onClick={() => setPage(1)}>Search</Button>
+        <Button className='btn btn-info px-3' onClick={() => setPage(1)}>Search</Button>
       </InputGroup>
       <div className="row">
         {tvShows.map(tvShow => (
@@ -60,23 +59,26 @@ const TVShows = () => {
                 <Card.Text className="flex-grow-1">
                   {tvShow.overview.length > 100 ? tvShow.overview.substring(0, 100) + '...' : tvShow.overview}
                 </Card.Text>
-                <Button variant="primary" className="mt-auto">View Details</Button>
-              </Card.Body>
+                <a href={`https://www.themoviedb.org/movie/${movie.id}`} target="_blank" rel="noReferrer">
+                  {" "}
+                  <Button className="w-100 btn btn-success">View Details</Button>
+                </a>              </Card.Body>
             </Card>
           </div>
         ))}
       </div>
-      <Pagination>
+      <Pagination className="mt-4 justify-content-center">
         <Pagination.First onClick={() => setPage(1)} />
         <Pagination.Prev onClick={() => setPage(prev => Math.max(prev - 1, 1))} />
-        {[...Array(totalPages).keys()].map(number => (
+        {[...Array(30).keys()].map(number => (
           <Pagination.Item key={number + 1} active={number + 1 === page} onClick={() => setPage(number + 1)}>
             {number + 1}
           </Pagination.Item>
         ))}
         <Pagination.Next onClick={() => setPage(prev => Math.min(prev + 1, totalPages))} />
-        <Pagination.Last onClick={() => setPage(totalPages)} />
+        <Pagination.Last onClick={() => setPage(30)} />
       </Pagination>
+
     </div>
   );
 };
