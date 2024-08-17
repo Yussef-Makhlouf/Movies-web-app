@@ -24,7 +24,9 @@ function App() {
           <Route path="/contact" component={Contact} />
           <Route path="/favorites" component={FavoriteMovies} />
         </Switch>
+        
       </div>
+
 
     </Router>
     </div>
