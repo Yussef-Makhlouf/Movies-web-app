@@ -1,10 +1,11 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Card, Container, Row, Col, Button } from 'react-bootstrap';
-
+import { useDispatch } from 'react-redux';
 import { removeFavorite } from '../redux/action';
 const FavoriteMovies = () => {
   const favorites = useSelector(state => state.favoriteMovies);
+  const dispatch = useDispatch();
 
   return (
     <Container>
@@ -17,7 +18,7 @@ const FavoriteMovies = () => {
                 <Card.Title>{movie.title}</Card.Title>
                 <Card.Text>{movie.release_date}</Card.Text>
                 <Card.Text>{movie.overview}</Card.Text>
-                <Button onClick={() => removeFavorite(movie)} variant="danger">remove</Button>
+                <Button onClick={() => dispatch(removeFavorite(movie.id))} variant="danger">remove</Button>
 
               </Card.Body>
             </Card>

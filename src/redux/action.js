@@ -1,24 +1,18 @@
 
-export const FAVORITE_ICON = 'TOGGLE_FAVORITE';
 
-export const handleFavorite = (payload) => ({
-  type: FAVORITE_ICON,
-  payload
+
+export const ADD_FAVORITE = 'ADD_FAVORITE';
+export const REMOVE_FAVORITE = 'REMOVE_FAVORITE';
+
+export const handleFavorite = (movie) => ({
+  type: ADD_FAVORITE,
+  payload: movie
 });
-export const removeFavorite = (payload)=> ({
-  
-  type: FAVORITE_ICON,
-  payload 
 
-})
-
-export default handleFavorite;
-
-
-
-
-
-
+export const removeFavorite = (movieId) => ({
+  type: REMOVE_FAVORITE,
+  payload: movieId
+});
 
 
 
@@ -30,11 +24,4 @@ export default handleFavorite;
 //     }
 
 // }
-// export default FavoriteMovies;
 
-// export const FAVORITE_ICON = 'TOGGLE_FAVORITE';
-
-// export const handleFavorite = (movieId) => ({
-//   type: FAVORITE_ICON,
-//   payload: movieId,
-// });

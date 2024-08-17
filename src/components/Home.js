@@ -1,18 +1,32 @@
 
 import { useDispatch, useSelector } from "react-redux";
-import { handleFavorite } from "../redux/action";
+import { handleFavorite, removeFavorite } from "../redux/action";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import {FaStar} from 'react-icons/fa';
+import { FaStar } from 'react-icons/fa';
 import { Card, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-
-
 
 function Home() {
   const [movies, setMovies] = useState([]);
   const favorites = useSelector((state) => state.favoriteMovies);
   const dispatch = useDispatch();
+//   const movie = useSelector((state) => state.movies);
+
+// useEffect(() => {
+//   dispatch(fetchMovies(language));
+ 
+// }, [dispatch, language]);
+
+ 
+
+  const handleStarClick = (movie) => {
+    if (favorites.some((fav) => fav.id === movie.id)) {
+      dispatch(removeFavorite(movie.id));
+    } else {
+      dispatch(handleFavorite(movie));
+    }
+  };
 
   useEffect(() => {
     axios
@@ -27,7 +41,7 @@ function Home() {
 
   return (
     <div className="container">
-      <h1 className="text-3xl font-bold mb-4 ">Home Page</h1>
+      <h1 className="text-3xl font-bold mb-4">Home Page</h1>
       <div className="row">
         {movies.map((movie) => (
           <div className="col-md-4 mb-4" key={movie.id}>
@@ -47,19 +61,19 @@ function Home() {
                 <Card.Title>
                   {movie.title}
                   <FaStar
-                    className="ml-2"
+                    className="ml-2 "
                     color={
                       favorites.some((fav) => fav.id === movie.id)
                         ? "yellow"
                         : "grey"
                     }
-                    onClick={() => dispatch(handleFavorite(movie))}
+                    onClick={() => handleStarClick(movie)}
                     style={{ cursor: "pointer" }}
                   />
                 </Card.Title>
                 <Card.Text style={{ flexGrow: 1 }}>{movie.overview}</Card.Text>
                 <Link to={`/details/${movie.id}`}>
-                  <Button className="w-100 btn btn-success  ">
+                  <Button className="w-100 btn btn-success">
                     View Details
                   </Button>
                 </Link>
@@ -73,3 +87,4 @@ function Home() {
 }
 
 export default Home;
+
