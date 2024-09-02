@@ -49,6 +49,9 @@ function Home() {
               <Card.Img
                 variant="top"
                 src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                class name = "card-img-top mb-4 rounded d-block mx-auto w-50"
+              
+                
               />
               <Card.Body
                 style={{

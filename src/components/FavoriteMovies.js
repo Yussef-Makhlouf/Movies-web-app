@@ -9,11 +9,11 @@ const FavoriteMovies = () => {
 
   return (
     <Container>
-      <Row>
+      <Row className='justify-content-md-center mt-4'>
         {favorites.map((movie, index) => (
           <Col key={`${movie.id}-${index}`} md={4} sm={6} className="mb-4">
             <Card>
-              <Card.Img variant="top" src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} />
+              <Card.Img variant="top" src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}  />
               <Card.Body>
                 <Card.Title>{movie.title}</Card.Title>
                 <Card.Text>{movie.release_date}</Card.Text>
